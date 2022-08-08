@@ -12,7 +12,7 @@ mkdir -p /tmp/nginx/body \
 touch /var/log/nginx/error.log && chmod 777 /var/log/nginx/error.log && chmod -R 777 /var/cache/nginx
 
 # Dynamically generate resolvers file
-echo resolver "$(awk 'BEGIN{ORS=" "} $1=="nameserver" {print $2}' /etc/resolv.conf)" ";" > /etc/nginx/conf.d/include/resolvers.conf
+echo resolver "$(awk 'BEGIN{ORS=" "} $1=="nameserver" {print $2}' /etc/resolv.conf)" "ipv6=off;" > /etc/nginx/conf.d/include/resolvers.conf
 
 # Fire off acme.sh wrapper script to "install" itself if required
 acme.sh -h > /dev/null 2>&1
